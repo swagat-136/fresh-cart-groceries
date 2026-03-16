@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="FreshCart — Premium online grocery shopping. Browse fresh fruits, vegetables, dairy, bakery items, beverages, and snacks. Fast delivery to your doorstep.">
+  <title>FreshCart — Fresh Groceries Delivered</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+
+  <!-- ── Navigation ── -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#" class="nav-logo" id="nav-logo">
+        <span class="logo-icon">🛒</span>
+        <span class="logo-text">Fresh<span class="logo-accent">Cart</span></span>
+      </a>
+      <div class="nav-search" id="nav-search-wrapper">
+        <span class="search-icon">🔍</span>
+        <input type="text" id="search-input" placeholder="Search groceries..." autocomplete="off">
+      </div>
+      <div class="nav-actions">
+        <button class="nav-btn cart-btn" id="cart-btn" aria-label="Shopping Cart">
+          <span class="cart-icon">🛒</span>
+          <span class="cart-badge" id="cart-badge">0</span>
+          <span class="cart-label">Cart</span>
+        </button>
+        <button class="nav-btn orders-btn" id="orders-btn" aria-label="My Orders">
+          <span class="orders-icon">📦</span>
+          <span class="orders-label">Orders</span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── Hero Section ── -->
+  <section class="hero" id="hero-section">
+    <div class="hero-content">
+      <div class="hero-badge">🌿 100% Fresh Guaranteed</div>
+      <h1 class="hero-title">
+        Fresh Groceries,<br>
+        <span class="hero-highlight">Delivered Fast</span>
+      </h1>
+      <p class="hero-subtitle">
+        Premium quality produce, dairy, bakery &amp; more —
+        handpicked and delivered to your doorstep.
+      </p>
+      <button class="hero-cta" id="hero-shop-btn">
+        Start Shopping
+        <span class="cta-arrow">→</span>
+      </button>
+    </div>
+    <div class="hero-visual">
+      <div class="float-item float-1">🍎</div>
+      <div class="float-item float-2">🥬</div>
+      <div class="float-item float-3">🥐</div>
+      <div class="float-item float-4">🍊</div>
+      <div class="float-item float-5">🧀</div>
+      <div class="float-item float-6">🍓</div>
+    </div>
+  </section>
+
+  <!-- ── Category Filter Bar ── -->
+  <section class="categories-section" id="categories-section">
+    <div class="container">
+      <div class="section-header">
+        <h2 class="section-title">Shop by Category</h2>
+        <p class="section-subtitle">Browse our curated selection of fresh products</p>
+      </div>
+      <div class="category-pills" id="category-pills">
+        <button class="pill active" data-category="all">
+          <span class="pill-icon">🏪</span> All Products
+        </button>
+        <button class="pill" data-category="fruits">
+          <span class="pill-icon">🍎</span> Fruits
+        </button>
+        <button class="pill" data-category="vegetables">
+          <span class="pill-icon">🥬</span> Vegetables
+        </button>
+        <button class="pill" data-category="dairy">
+          <span class="pill-icon">🥛</span> Dairy
+        </button>
+        <button class="pill" data-category="bakery">
+          <span class="pill-icon">🍞</span> Bakery
+        </button>
+        <button class="pill" data-category="beverages">
+          <span class="pill-icon">🍊</span> Beverages
+        </button>
+        <button class="pill" data-category="snacks">
+          <span class="pill-icon">🥜</span> Snacks
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Products Grid ── -->
+  <section class="products-section" id="products-section">
+    <div class="container">
+      <div class="products-header">
+        <h2 id="products-title">All Products</h2>
+        <span class="products-count" id="products-count"></span>
+      </div>
+      <div class="products-grid" id="products-grid">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="empty-state hidden" id="empty-products">
+        <span class="empty-icon">🔍</span>
+        <h3>No products found</h3>
+        <p>Try a different search term or category</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Cart Drawer ── -->
+  <div class="drawer-overlay hidden" id="drawer-overlay"></div>
+  <aside class="cart-drawer hidden" id="cart-drawer">
+    <div class="drawer-header">
+      <h2>
+        <span class="drawer-icon">🛒</span>
+        Your Cart
+      </h2>
+      <button class="drawer-close" id="drawer-close" aria-label="Close cart">✕</button>
+    </div>
+    <div class="drawer-body" id="cart-items">
+      <!-- Dynamically populated -->
+    </div>
+    <div class="drawer-empty hidden" id="cart-empty">
+      <span class="empty-cart-icon">🛒</span>
+      <h3>Your cart is empty</h3>
+      <p>Add some fresh groceries!</p>
+    </div>
+    <div class="drawer-footer" id="cart-footer">
+      <div class="cart-summary">
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <span id="cart-subtotal">₹0.00</span>
+        </div>
+        <div class="summary-row">
+          <span>Delivery</span>
+          <span class="delivery-free">FREE</span>
+        </div>
+        <div class="summary-row total">
+          <span>Total</span>
+          <span id="cart-total">₹0.00</span>
+        </div>
+      </div>
+      <button class="checkout-btn" id="checkout-btn">
+        Proceed to Checkout
+        <span class="cta-arrow">→</span>
+      </button>
+      <button class="clear-cart-btn" id="clear-cart-btn">Clear Cart</button>
+    </div>
+  </aside>
+
+  <!-- ── Checkout Modal ── -->
+  <div class="modal-overlay hidden" id="checkout-overlay">
+    <div class="modal" id="checkout-modal">
+      <div class="modal-header">
+        <h2><span class="modal-icon">📋</span> Checkout</h2>
+        <button class="modal-close" id="checkout-close" aria-label="Close checkout">✕</button>
+      </div>
+      <div class="modal-body">
+        <div class="checkout-summary" id="checkout-summary">
+          <!-- Order summary populated here -->
+        </div>
+        <form id="checkout-form" class="checkout-form">
+          <h3 class="form-section-title">Delivery Details</h3>
+          <div class="form-group">
+            <label for="customer-name">Full Name</label>
+            <input type="text" id="customer-name" placeholder="John Doe" required>
+          </div>
+          <div class="form-group">
+            <label for="customer-phone">Phone Number</label>
+            <input type="tel" id="customer-phone" placeholder="+1 (555) 123-4567" required>
+          </div>
+          <div class="form-group">
+            <label for="customer-address">Delivery Address</label>
+            <textarea id="customer-address" rows="3" placeholder="123 Main St, Apt 4B, New York, NY 10001" required></textarea>
+          </div>
+          <button type="submit" class="place-order-btn" id="place-order-btn">
+            <span class="btn-text">Place Order</span>
+            <span class="btn-loader hidden" id="order-loader">⏳</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Order Confirmation Modal ── -->
+  <div class="modal-overlay hidden" id="confirmation-overlay">
+    <div class="modal confirmation-modal" id="confirmation-modal">
+      <div class="confirmation-content" id="confirmation-content">
+        <!-- Dynamically populated -->
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Orders Page (hidden by default) ── -->
+  <section class="orders-section hidden" id="orders-section">
+    <div class="container">
+      <div class="section-header">
+        <button class="back-btn" id="orders-back-btn">← Back to Shop</button>
+        <h2 class="section-title">My Orders</h2>
+        <p class="section-subtitle">Track your recent orders</p>
+      </div>
+      <div class="orders-list" id="orders-list">
+        <!-- Dynamically populated -->
+      </div>
+      <div class="empty-state hidden" id="empty-orders">
+        <span class="empty-icon">📦</span>
+        <h3>No orders yet</h3>
+        <p>Place your first order to see it here</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── Toast Container ── -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- ── Scripts ── -->
+  <script src="/js/api.js"></script>
+  <script src="/js/products.js"></script>
+  <script src="/js/cart.js"></script>
+  <script src="/js/checkout.js"></script>
+  <script src="/js/app.js"></script>
+
+</body>
+</html>
